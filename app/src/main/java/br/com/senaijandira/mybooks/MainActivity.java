@@ -28,9 +28,15 @@ public class MainActivity extends AppCompatActivity {
 
         livros = new Livro[]{
                 new Livro(1,Utils.toByteArray(getResources(),R.drawable.pequeno_principe),
-                        "oi",getString(R.string.PeguenoPrincipe)),
-                new Livro(1,Utils.toByteArray(getResources(),R.drawable.pequeno_principe),
-                        "oi",getString(R.string.PeguenoPrincipe))
+                        "O pequeno Principe",getString(R.string.PeguenoPrincipe)),
+                new Livro(1,Utils.toByteArray(getResources(),R.drawable.cinquenta_tons_cinza),
+                        "50 Tons",getString(R.string.PeguenoPrincipe)),
+                new Livro(1,Utils.toByteArray(getResources(),R.drawable.cinquenta_tons_cinza),
+                        "50 Tons",getString(R.string.PeguenoPrincipe)),
+                new Livro(1,Utils.toByteArray(getResources(),R.drawable.cinquenta_tons_cinza),
+                        "50 Tons",getString(R.string.PeguenoPrincipe)),
+                new Livro(1,Utils.toByteArray(getResources(),R.drawable.cinquenta_tons_cinza),
+                        "50 Tons",getString(R.string.PeguenoPrincipe))
         };
 
 
