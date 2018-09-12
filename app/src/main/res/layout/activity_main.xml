@@ -5,5 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/listalivros">
+        <include layout="@layout/livro_layout"/>
+
+    </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:srcCompat="@android:drawable/ic_input_add"
+        android:tint="#fff"
+        android:backgroundTint="#D2D2"
+        android:layout_gravity="bottom|end"/><!-- COLOCA EMBAIXO E NA ESQUEQERDA USANDO |-->
+
 
 </android.support.design.widget.CoordinatorLayout>
