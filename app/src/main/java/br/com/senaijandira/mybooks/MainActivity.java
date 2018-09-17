@@ -1,5 +1,6 @@
 package br.com.senaijandira.mybooks;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,13 +10,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import br.com.senaijandira.mybooks.model.Livro;
 import br.com.senaijandira.mybooks.utils.Utils;
 
 public class MainActivity extends AppCompatActivity {
 
     private LinearLayout listaLivro;
-    public static Livro[] livros;
+    public static ArrayList<Livro> livros = new ArrayList<Livro>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,18 +29,21 @@ public class MainActivity extends AppCompatActivity {
 
         //cria livros
 
-        livros = new Livro[]{
-                new Livro(1,Utils.toByteArray(getResources(),R.drawable.pequeno_principe),
-                        "O pequeno Principe",getString(R.string.PeguenoPrincipe)),
-                new Livro(1,Utils.toByteArray(getResources(),R.drawable.cinquenta_tons_cinza),
-                        "50 Tons",getString(R.string.PeguenoPrincipe)),
-                new Livro(1,Utils.toByteArray(getResources(),R.drawable.cinquenta_tons_cinza),
-                        "50 Tons",getString(R.string.PeguenoPrincipe)),
-                new Livro(1,Utils.toByteArray(getResources(),R.drawable.cinquenta_tons_cinza),
-                        "50 Tons",getString(R.string.PeguenoPrincipe)),
-                new Livro(1,Utils.toByteArray(getResources(),R.drawable.cinquenta_tons_cinza),
-                        "50 Tons",getString(R.string.PeguenoPrincipe))
-        };
+        livros.add(new Livro(1,Utils.toByteArray(getResources(),R.drawable.pequeno_principe),
+                "O pequeno Principe",getString(R.string.PeguenoPrincipe)));
+        livros.add(new Livro(1,Utils.toByteArray(getResources(),R.drawable.cinquenta_tons_cinza),
+                "50 Tons",getString(R.string.PeguenoPrincipe)));
+        livros.add(new Livro(1,Utils.toByteArray(getResources(),R.drawable.kotlin_android),
+                "Kotlin",getString(R.string.PeguenoPrincipe)));
+        livros.add(new Livro(1,Utils.toByteArray(getResources(),R.drawable.pequeno_principe),
+                "O pequeno Principe",getString(R.string.PeguenoPrincipe)));
+        livros.add(new Livro(1,Utils.toByteArray(getResources(),R.drawable.cinquenta_tons_cinza),
+                "50 Tons",getString(R.string.PeguenoPrincipe)));
+        livros.add(new Livro(1,Utils.toByteArray(getResources(),R.drawable.kotlin_android),
+                "Kotlin",getString(R.string.PeguenoPrincipe)));
+
+
+
 
 
         for(Livro l :livros){
@@ -55,6 +61,16 @@ public class MainActivity extends AppCompatActivity {
 
         addLivro(livroTmp,listaLivro);*/
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        listaLivro.removeAllViews();
+        for(Livro l :livros){
+            addLivro(l,listaLivro);
+        }
+    }
+
     private void addLivro(Livro livro, ViewGroup root){
                 //carrega o layout do arquivo livro_layuot passado o aonde estará root e dizendo que o objeto não herdadra atruibutos do root
         View v = LayoutInflater.from(this).inflate(R.layout.livro_layout,root,false);
@@ -72,5 +88,8 @@ public class MainActivity extends AppCompatActivity {
         descricao.setText(livro.getDescricao());
 
         root.addView(v);
+    }
+    public void abrirCadastro(View v){
+        startActivity(new Intent(this,CadastroActivity.class));
     }
 }
