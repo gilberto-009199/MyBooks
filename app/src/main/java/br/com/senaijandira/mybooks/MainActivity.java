@@ -13,7 +13,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import br.com.senaijandira.mybooks.model.Livro;
-import br.com.senaijandira.mybooks.utils.Utils;
+import br.com.senaijandira.mybooks.utils.ConvertImage;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,26 +29,18 @@ public class MainActivity extends AppCompatActivity {
 
         //cria livros
 
-        livros.add(new Livro(1,Utils.toByteArray(getResources(),R.drawable.pequeno_principe),
+        livros.add(new Livro(1,ConvertImage.toByteArray(getResources(),R.drawable.pequeno_principe),
                 "O pequeno Principe",getString(R.string.PeguenoPrincipe)));
-        livros.add(new Livro(1,Utils.toByteArray(getResources(),R.drawable.cinquenta_tons_cinza),
+        livros.add(new Livro(1,ConvertImage.toByteArray(getResources(),R.drawable.cinquenta_tons_cinza),
                 "50 Tons",getString(R.string.PeguenoPrincipe)));
-        livros.add(new Livro(1,Utils.toByteArray(getResources(),R.drawable.kotlin_android),
+        livros.add(new Livro(1,ConvertImage.toByteArray(getResources(),R.drawable.kotlin_android),
                 "Kotlin",getString(R.string.PeguenoPrincipe)));
-        livros.add(new Livro(1,Utils.toByteArray(getResources(),R.drawable.pequeno_principe),
+        livros.add(new Livro(1,ConvertImage.toByteArray(getResources(),R.drawable.pequeno_principe),
                 "O pequeno Principe",getString(R.string.PeguenoPrincipe)));
-        livros.add(new Livro(1,Utils.toByteArray(getResources(),R.drawable.cinquenta_tons_cinza),
+        livros.add(new Livro(1,ConvertImage.toByteArray(getResources(),R.drawable.cinquenta_tons_cinza),
                 "50 Tons",getString(R.string.PeguenoPrincipe)));
-        livros.add(new Livro(1,Utils.toByteArray(getResources(),R.drawable.kotlin_android),
+        livros.add(new Livro(1,ConvertImage.toByteArray(getResources(),R.drawable.kotlin_android),
                 "Kotlin",getString(R.string.PeguenoPrincipe)));
-
-
-
-
-
-        for(Livro l :livros){
-            addLivro(l,listaLivro);
-        }
         /*
         Livro livroTmp = new Livro();
 
@@ -81,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
         TextView descricao = v.findViewById(R.id.txtLivroDescricao);
 
-        capa.setImageBitmap(Utils.toBitmap(livro.getCapa()));
+        capa.setImageBitmap(ConvertImage.toBitmap(livro.getCapa()));
 
         titulo.setText(livro.getTitulo());
 

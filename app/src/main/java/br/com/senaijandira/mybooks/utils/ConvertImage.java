@@ -10,7 +10,7 @@ import android.graphics.BitmapFactory;
 
 import java.io.ByteArrayOutputStream;
 
-public class Utils {
+public class ConvertImage{
 
     public static final String DATABASE_NAME = "mybooks.db";
 
@@ -35,21 +35,6 @@ public class Utils {
     public static Bitmap toBitmap(byte[] imagem){
         return BitmapFactory.decodeByteArray(imagem, 0, imagem.length);
     }
-    public static void Alerta(Context contexto, String titulo, String msg, Dialog.OnClickListener positive, Dialog.OnClickListener negative){
-        AlertDialog.Builder alert = new AlertDialog.Builder(contexto);
-        alert.setTitle(titulo);
-        alert.setMessage(msg);
 
-        //nao pode cancelar o alert ao clicar fora da caixa
-        alert.setCancelable(false);
-
-        alert.setPositiveButton("Ok", positive);
-        if(negative!=null){
-            alert.setNegativeButton("Cancelar", negative);
-        }
-        alert.create().show();
-
-
-    }
 
 }

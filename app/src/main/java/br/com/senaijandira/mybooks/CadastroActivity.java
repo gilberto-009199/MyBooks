@@ -17,7 +17,8 @@ import android.widget.ImageView;
 import java.io.InputStream;
 
 import br.com.senaijandira.mybooks.model.Livro;
-import br.com.senaijandira.mybooks.utils.Utils;
+import br.com.senaijandira.mybooks.utils.Alertas;
+import br.com.senaijandira.mybooks.utils.ConvertImage;
 
 import static br.com.senaijandira.mybooks.MainActivity.livros;
 
@@ -70,7 +71,7 @@ public class CadastroActivity extends AppCompatActivity {
 
         if( titulo.length()==0 || desc.length()==0){
             System.out.println("Um dos Campos esta nullo");
-            Utils.Alerta(this,"Erro!!","Por Favor!! Preencha todos os campos.",new Dialog.OnClickListener(){
+            Alertas.Alerta(this,"Erro!!","Por Favor!! Preencha todos os campos.",new Dialog.OnClickListener(){
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     txtTitulo.setTextColor(Color.parseColor("#f44242"));
@@ -82,21 +83,21 @@ public class CadastroActivity extends AppCompatActivity {
 
         if(livroCapa==null){
             System.out.println("Imagem Não selecionada");
-            Utils.Alerta(this,"Erro!!","Por Favor!! Escolha uma Imagem de Capa.",new Dialog.OnClickListener(){
+            Alertas.Alerta(this,"Erro!!","Por Favor!! Escolha uma Imagem de Capa.",new Dialog.OnClickListener(){
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    imgLivroCapa.setImageBitmap(Utils.toBitmap(Utils.toByteArray(getResources(),R.drawable.error)));
+                    imgLivroCapa.setImageBitmap(ConvertImage.toBitmap(ConvertImage.toByteArray(getResources(),R.drawable.error)));
                 }
             },null);
             return;
         }else {
-            byte[] capa = Utils.toByteArray(livroCapa);
+            byte[] capa = ConvertImage.toByteArray(livroCapa);
 
             Livro livroTmp = new Livro(0, capa, titulo, desc);
             livros.add(livroTmp);
 
 
-            Utils.Alerta(this, "Cadastrado!!", "o livro foui cadastrado com sucessso", new Dialog.OnClickListener() {
+            Alertas.Alerta(this, "Cadastrado!!", "o livro foui cadastrado com sucessso", new Dialog.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     finish();
