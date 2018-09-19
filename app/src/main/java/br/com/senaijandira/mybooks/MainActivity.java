@@ -72,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         System.out.println(new Date().toString()+":Evento onStart iniciado");
-
         System.out.println(new Date().toString()+":Evento onStart finalizado");
     }
 

@@ -10,11 +10,11 @@
         private int id;
 
         @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
-        private byte[] capa;
+        protected byte[] capa;
 
-        private String titulo;
+        protected String titulo;
 
-        private String descricao;
+        protected String descricao;
 
         public  Livro(){
 
