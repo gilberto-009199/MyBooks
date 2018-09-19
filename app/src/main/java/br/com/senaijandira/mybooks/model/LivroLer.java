@@ -1,5 +1,6 @@
 package br.com.senaijandira.mybooks.model;
 
+import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
@@ -8,7 +9,7 @@ public final class LivroLer{
 
     @PrimaryKey(autoGenerate=true)
     private int id;
-
+    @ColumnInfo(typeAffinity = ColumnInfo.INTEGER)
     private int idLivro;
 
     public int getId() {
