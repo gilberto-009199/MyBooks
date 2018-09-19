@@ -2,28 +2,28 @@ package br.com.senaijandira.mybooks;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.arch.persistence.room.Room;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 
 import java.io.InputStream;
 
+import br.com.senaijandira.mybooks.db.MyBooksDatabase;
 import br.com.senaijandira.mybooks.model.Livro;
 import br.com.senaijandira.mybooks.utils.Alertas;
 import br.com.senaijandira.mybooks.utils.ConvertImage;
 
-import static br.com.senaijandira.mybooks.MainActivity.livros;
-
 public class CadastroActivity extends AppCompatActivity {
 
+    private MyBooksDatabase myBooksDb;
     EditText txtTitulo,txtDesc;;
     ImageView imgLivroCapa;
     Bitmap livroCapa;
@@ -38,6 +38,11 @@ public class CadastroActivity extends AppCompatActivity {
         imgLivroCapa = findViewById(R.id.imgLivroCapa);
         txtDesc = findViewById(R.id.txtDesc);
         txtTitulo = findViewById(R.id.txtTitulo);
+
+        myBooksDb = Room.databaseBuilder(getApplicationContext(),MyBooksDatabase.class, ConvertImage.DATABASE_NAME).fallbackToDestructiveMigration().allowMainThreadQueries().build();
+
+
+
     }
 
     public void abrirGaleria(View view) {
@@ -94,7 +99,10 @@ public class CadastroActivity extends AppCompatActivity {
             byte[] capa = ConvertImage.toByteArray(livroCapa);
 
             Livro livroTmp = new Livro(0, capa, titulo, desc);
-            livros.add(livroTmp);
+
+            myBooksDb.daoLivro().inserir(livroTmp);
+
+            /*MainActivity.livros= Arrays.copyOf(MainActivity.livros,MainActivity.livros.length+1);*/
 
 
             Alertas.Alerta(this, "Cadastrado!!", "o livro foui cadastrado com sucessso", new Dialog.OnClickListener() {
