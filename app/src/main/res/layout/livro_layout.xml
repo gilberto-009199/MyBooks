@@ -8,10 +8,11 @@
         android:layout_height="wrap_content"
         card_view:cardCornerRadius="4dp">
         <LinearLayout
+            android:background="#000"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="2dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:orientation="horizontal">
             <ImageView
                 android:id="@+id/imgLivroCapa"
@@ -32,7 +33,7 @@
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
                     android:textSize="32sp"
-                    android:textColor="#000"
+                    android:textColor="#fff"
                     android:textStyle="bold"
                     android:text="TITULO"
                     android:id="@+id/txtLivroTitulo"
@@ -43,16 +44,36 @@
                     android:padding="2dp"
                     android:textSize="16sp"
                     android:id="@+id/txtLivroDescricao"
-                    android:textColor="#000"
+                    android:textColor="#fff"
                     android:textAlignment="center"
                     android:text="@string/PeguenoPrincipe"/>
             </LinearLayout>
-            <ImageView
+            <LinearLayout
+                android:paddingTop="2dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:src="@drawable/trash24x24"
-                android:id="@+id/imgDeleteIcon"/>
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <ImageView
+                    android:background="#00ff26"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/edit24x24"/>
+                <ImageView
+                    android:layout_gravity="center"
+                    android:background="#00ffcb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/pageview24x24"/>
+                <ImageView
+                    android:layout_gravity="center"
+                    android:background="#ff4f4f"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/trash24x24"
+                    android:id="@+id/imgDeleteIcon"/>
+
+            </LinearLayout>
         </LinearLayout>
     </android.support.v7.widget.CardView>
 </LinearLayout>
