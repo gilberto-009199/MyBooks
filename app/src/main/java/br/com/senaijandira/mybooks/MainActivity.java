@@ -39,32 +39,6 @@ public class MainActivity extends AppCompatActivity {
 
         listaLivro = findViewById(R.id.listalivros);
 
-        //cria livros
-
-        /*livros.add(new Livro(1,ConvertImage.toByteArray(getResources(),R.drawable.pequeno_principe),
-                "O pequeno Principe",getString(R.string.PeguenoPrincipe)));
-        livros.add(new Livro(1,ConvertImage.toByteArray(getResources(),R.drawable.cinquenta_tons_cinza),
-                "50 Tons",getString(R.string.PeguenoPrincipe)));
-        livros.add(new Livro(1,ConvertImage.toByteArray(getResources(),R.drawable.kotlin_android),
-                "Kotlin",getString(R.string.PeguenoPrincipe)));
-        livros.add(new Livro(1,ConvertImage.toByteArray(getResources(),R.drawable.pequeno_principe),
-                "O pequeno Principe",getString(R.string.PeguenoPrincipe)));
-        livros.add(new Livro(1,ConvertImage.toByteArray(getResources(),R.drawable.cinquenta_tons_cinza),
-                "50 Tons",getString(R.string.PeguenoPrincipe)));
-        livros.add(new Livro(1,ConvertImage.toByteArray(getResources(),R.drawable.kotlin_android),
-                "Kotlin",getString(R.string.PeguenoPrincipe)));
-                */
-        /*
-        Livro livroTmp = new Livro();
-
-        byte[] capa = Utils.toByteArray(getResources(), R.drawable.pequeno_principe);
-
-        livroTmp.setId(1);
-        livroTmp.setCapa(capa);
-        livroTmp.setTitulo("Pequeno Principe");
-        livroTmp.setDescricao("Descrição do pequeno princpe:");
-
-        addLivro(livroTmp,listaLivro);*/
         System.out.println(new Date().toString()+": Evento onCreate finalizado");
     }
 
