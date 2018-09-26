@@ -3,6 +3,8 @@ package br.com.senaijandira.mybooks;
 import android.arch.persistence.room.Room;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import br.com.senaijandira.mybooks.db.MyBooksDatabase;
 import br.com.senaijandira.mybooks.model.Livro;
@@ -24,6 +26,14 @@ public class EditarActivity extends AppCompatActivity {
 
         Livro livrotmp =  myBooksDb.daoLivro().getLivro(i);
 
+        ImageView capa = findViewById(R.id.imgLivroCapa);
+
+        TextView titulo = findViewById(R.id.txtTitulo);
+
+        TextView descricao = findViewById(R.id.txtDesc);
+
+        titulo.setText(livrotmp.getTitulo());
+        descricao.setText(livrotmp.getDescricao());
 
     }
 

@@ -19,6 +19,7 @@
             <ImageView
                 android:layout_width="256dp"
                 android:layout_height="256dp"
+                android:id="@+id/imgLivroCapa"
                 android:src="@drawable/pequeno_principe"/>
         </LinearLayout>
         <LinearLayout
@@ -31,10 +32,12 @@
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
                     android:text="TITULO"
+                    android:id="@+id/txtTitulo"
                     android:textSize="32sp"
                     android:textColor="#000"/>
                 <TextView
                     android:textColor="#000"
+                    android:id="@id/txtDesc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Conteudosdasd asdas dasd asd asdas das das dsad sd sd sd "/>
