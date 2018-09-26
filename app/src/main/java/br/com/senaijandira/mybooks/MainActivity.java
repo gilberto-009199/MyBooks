@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         System.out.println(new Date().toString()+":Evento onResume iniciado");
+        adapter.clear();
         Livro[] livros = myBooksDb.daoLivro().selecionarLivros();
         adapter.addAll(livros);
         System.out.println(new Date().toString()+":Evento onResume finalizado");
