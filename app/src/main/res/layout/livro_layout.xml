@@ -58,13 +58,15 @@
                     android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/edit24x24"/>
+                    android:src="@drawable/edit24x24"
+                    android:id="@+id/imgEditIcon"/>
                 <ImageView
                     android:layout_gravity="center"
                     android:background="#00ffcb"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/pageview24x24"/>
+                    android:src="@drawable/pageview24x24"
+                    android:id="@+id/imgViewIcon"/>
                 <ImageView
                     android:layout_gravity="center"
                     android:background="#ff4f4f"

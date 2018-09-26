@@ -15,6 +15,9 @@ public interface LivroDao {
     @Insert
     void inserir(Livro l);
 
+    @Query("SELECT *FROM livro where id = :i ")
+    Livro getLivro(int i);
+
     @Update
     void atualizar(Livro l);
 

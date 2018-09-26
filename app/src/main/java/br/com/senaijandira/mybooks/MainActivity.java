@@ -49,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
         adapter = new LivrosAdapter(this);
         listaLivro.setAdapter(adapter);
 
+        new Thread(new Atualizalista(adapter)).start();
+
         System.out.println(new Date().toString()+": Evento onCreate finalizado");
     }
 
@@ -67,36 +69,10 @@ public class MainActivity extends AppCompatActivity {
         //listaLivro.removeView(v);
         adapter.remove(livro);
     }
-                        // final para que a função interna do onclick linester do botão delete possa pegar o livro
-    private void addLivro(final Livro livro, ViewGroup root){
-                //carrega o layout do arquivo livro_layuot passado o aonde estará root e dizendo que o objeto não herdadra atruibutos do root
-       /* final View v = LayoutInflater.from(this).inflate(R.layout.livro_layout,root,false);
-
-        ImageView capa = v.findViewById(R.id.imgLivroCapa);// pega o elemento dentro da v
-
-        TextView titulo = v.findViewById(R.id.txtLivroTitulo);
-
-        TextView descricao = v.findViewById(R.id.txtLivroDescricao);
-
-        ImageView iconeDelete = v.findViewById(R.id.imgDeleteIcon);
-
-        iconeDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                removeLivro(livro,v);
-
-            }
-        });
-
-        capa.setImageBitmap(ConvertImage.toBitmap(livro.getCapa()));
-
-        titulo.setText(livro.getTitulo());
-
-        descricao.setText(livro.getDescricao());
-
-        root.addView(v);
-        */
+    private void viewLivro(Livro livro,View v){
+        Intent intent = new Intent(this, EditarActivity.class);
+        intent.putExtra("Livro", livro.getId());
+        startActivity(intent);
     }
     public void abrirCadastro(View v){
         startActivity(new Intent(this,CadastroActivity.class));
@@ -123,14 +99,29 @@ public class MainActivity extends AppCompatActivity {
 
             TextView descricao = v.findViewById(R.id.txtLivroDescricao);
 
+            ImageView iconeEdit = v.findViewById(R.id.imgEditIcon);
+            ImageView iconeView = v.findViewById(R.id.imgViewIcon);
             ImageView iconeDelete = v.findViewById(R.id.imgDeleteIcon);
 
+            iconeEdit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    removeLivro(livrotmp,view);
+                }
+            });
+            iconeView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    viewLivro(livrotmp,view);
+                }
+            });
             iconeDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     removeLivro(livrotmp,view);
                 }
             });
+
 
             capa.setImageBitmap(ConvertImage.toBitmap(livrotmp.getCapa()));
 
@@ -152,12 +143,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
         public void run(){
-            while(true){
+            int i=0;
+            while(i<9){
                 try {
-
-                    System.out.println("Hello Word");
-
-                    sleep(100);
+                    System.out.println("Hello Word | i:"+i);
+                    sleep(200);
+                    i++;
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
