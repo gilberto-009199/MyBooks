@@ -5,6 +5,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity">
+
         <ListView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -21,7 +22,9 @@
             android:tint="#fff"
             android:onClick="abrirCadastro"
             android:backgroundTint="#D2D2"
-            android:layout_gravity="bottom|end"/><!-- COLOCA EMBAIXO E NA ESQUEQERDA USANDO |-->
+            android:layout_gravity="bottom|end"/>
+
+    <!-- COLOCA EMBAIXO E NA ESQUEQERDA USANDO |-->
 
 
     </android.support.design.widget.CoordinatorLayout>

@@ -69,11 +69,6 @@ public class MainActivity extends AppCompatActivity {
         //listaLivro.removeView(v);
         adapter.remove(livro);
     }
-    private void viewLivro(Livro livro,View v){
-        Intent intent = new Intent(this, EditarActivity.class);
-        intent.putExtra("Livro", livro.getId());
-        startActivity(intent);
-    }
     public void abrirCadastro(View v){
         startActivity(new Intent(this,CadastroActivity.class));
     }
@@ -106,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
             iconeEdit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    removeLivro(livrotmp,view);
+                    editLivro(livrotmp,view);
                 }
             });
             iconeView.setOnClickListener(new View.OnClickListener() {
@@ -131,6 +126,16 @@ public class MainActivity extends AppCompatActivity {
 
             return v;
         }
+    }
+    private void viewLivro(Livro livro,View v){
+        Intent intent = new Intent(this, VerActivity.class);
+        intent.putExtra("Livro", livro.getId());
+        startActivity(intent);
+    }
+    private void editLivro(Livro livrotmp, View view) {
+        Intent intent = new Intent(this, EditarActivity.class);
+        intent.putExtra("Livro", livrotmp.getId());
+        startActivity(intent);
     }
 
     private class Atualizalista implements Runnable{
