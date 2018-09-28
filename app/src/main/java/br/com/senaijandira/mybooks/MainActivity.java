@@ -8,6 +8,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -36,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         System.out.println(new Date().toString()+": Evento onCreate iniciado ############################################");
         setContentView(R.layout.activity_main);
-
+        System.out.println(new Date().toString()+": Carregado o xml ############################################");
 
         /*
         *   Criando uma intancia do banco de dados usando o nome na costante da clase ConvertImage
@@ -49,9 +51,22 @@ public class MainActivity extends AppCompatActivity {
         adapter = new LivrosAdapter(this);
         listaLivro.setAdapter(adapter);
 
-        new Thread(new Atualizalista(adapter)).start();
+        //new Thread(new Atualizalista(adapter)).start();
 
         System.out.println(new Date().toString()+": Evento onCreate finalizado");
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.livroslidos) {
+            //Abre outra janela... com livros lidos
+        }
+        return true;
     }
 
     @Override

@@ -20,12 +20,13 @@
             android:layout_height="259dp"
             android:orientation="horizontal"
             android:gravity="center"
-            android:background="#000"
+            android:background="@drawable/btninfo"
             android:padding="7dp">
             <ImageView
                 android:layout_width="256dp"
                 android:layout_height="256dp"
                 android:id="@+id/imgLivroCapa"
+                android:background="#d2d5ee"
                 android:onClick="abrirGaleria"
                 android:src="@android:drawable/ic_menu_camera"/>
         </LinearLayout>

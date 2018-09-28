@@ -5,15 +5,44 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity">
-
-        <ListView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/ltsLivros">
+            android:layout_height="54dp"
+            android:background="@drawable/btninfo"
+            android:orientation="horizontal">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_margin="2dp"
+                android:paddingLeft="2dp"
+                android:layout_weight="1"
+                android:hint="Pesquisa..."
+                android:background="@drawable/txt"
+                android:layout_height="match_parent"/>
+            <Button
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_weight="2"
+                android:layout_margin="2dp"
+                android:background="@drawable/btn"
+                android:text="Pesquisar"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="54dp"
+            android:orientation="vertical">
+
+            <ListView
+                android:id="@+id/ltsLivros"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
 
+            </ListView>
+        </LinearLayout>
 
-        </ListView>
         <android.support.design.widget.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -22,9 +51,9 @@
             android:tint="#fff"
             android:onClick="abrirCadastro"
             android:backgroundTint="#D2D2"
-            android:layout_gravity="bottom|end"/>
+            android:layout_gravity="bottom|start"/>
 
-    <!-- COLOCA EMBAIXO E NA ESQUEQERDA USANDO |-->
+        <!-- COLOCA EMBAIXO E NA ESQUEQERDA USANDO |-->
 
 
     </android.support.design.widget.CoordinatorLayout>
