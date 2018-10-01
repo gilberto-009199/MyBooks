@@ -29,7 +29,8 @@
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:theme="@android:style/Theme.Translucent" />
         <activity android:name=".teste" />
-        <activity android:name=".EditarActivity"></activity>
+        <activity android:name=".EditarActivity" />
+        <activity android:name=".LivrosActivity"></activity>
     </application>
 
 </manifest>

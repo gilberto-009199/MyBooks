@@ -1,5 +1,6 @@
 package br.com.senaijandira.mybooks;
 
+import android.app.Activity;
 import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.content.Intent;
@@ -86,6 +87,10 @@ public class MainActivity extends AppCompatActivity {
     }
     public void abrirCadastro(View v){
         startActivity(new Intent(this,CadastroActivity.class));
+    }
+
+    public void abrirListas(View view) {
+        startActivity(new Intent(this,LivrosActivity.class));
     }
 
     public class LivrosAdapter extends ArrayAdapter<Livro>{

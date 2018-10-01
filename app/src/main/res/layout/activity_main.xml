@@ -28,32 +28,45 @@
                 />
         </LinearLayout>
 
-        <LinearLayout
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="54dp"
+        android:orientation="vertical">
+
+        <ListView
+            android:id="@+id/ltsLivros"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="54dp"
-            android:orientation="vertical">
-
-            <ListView
-                android:id="@+id/ltsLivros"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            android:layout_height="wrap_content">
 
 
-            </ListView>
-        </LinearLayout>
+        </ListView>
+    </LinearLayout>
 
-        <android.support.design.widget.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            app:srcCompat="@android:drawable/ic_input_add"
-            android:tint="#fff"
-            android:onClick="abrirCadastro"
-            android:backgroundTint="#D2D2"
-            android:layout_gravity="bottom|start"/>
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|start"
+        android:layout_margin="16dp"
+        android:backgroundTint="#D2D2"
+        android:onClick="abrirCadastro"
+        android:tint="#fff"
+        app:layout_anchor="@+id/linearLayout"
+        app:layout_anchorGravity="right|bottom"
+        app:srcCompat="@android:drawable/ic_input_add" />
 
-        <!-- COLOCA EMBAIXO E NA ESQUEQERDA USANDO |-->
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|start"
+        android:layout_margin="16dp"
+        android:backgroundTint="#e3e"
+        android:onClick="abrirListas"
+        android:tint="#fff"
+        app:layout_anchorGravity="center|right"
+        app:srcCompat="@drawable/menu" />
+    <!-- COLOCA EMBAIXO E NA ESQUEQERDA USANDO |-->
 
 
     </android.support.design.widget.CoordinatorLayout>
