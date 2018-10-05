@@ -15,6 +15,7 @@
                 android:layout_margin="2dp"
                 android:paddingLeft="2dp"
                 android:layout_weight="1"
+                android:focusable="auto"
                 android:hint="Pesquisa..."
                 android:background="@drawable/txt"
                 android:layout_height="match_parent"/>
@@ -47,12 +48,11 @@
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|start"
+        android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         android:backgroundTint="#D2D2"
         android:onClick="abrirCadastro"
         android:tint="#fff"
-        app:layout_anchor="@+id/linearLayout"
         app:layout_anchorGravity="right|bottom"
         app:srcCompat="@android:drawable/ic_input_add" />
 
@@ -64,7 +64,7 @@
         android:backgroundTint="#e3e"
         android:onClick="abrirListas"
         android:tint="#fff"
-        app:layout_anchorGravity="center|right"
+        app:layout_anchorGravity="left|bottom"
         app:srcCompat="@drawable/menu" />
     <!-- COLOCA EMBAIXO E NA ESQUEQERDA USANDO |-->
 

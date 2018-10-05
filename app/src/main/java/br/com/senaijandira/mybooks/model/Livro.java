@@ -2,9 +2,10 @@
 
     import android.arch.persistence.room.ColumnInfo;
     import android.arch.persistence.room.Entity;
+    import android.arch.persistence.room.ForeignKey;
     import android.arch.persistence.room.PrimaryKey;
 
-    @Entity //diz o orm que isso sera uma tabela
+    @Entity(tableName = "livro") //diz o orm que isso sera uma tabela
     public class Livro {
         @PrimaryKey(autoGenerate=true)
         private int id;
@@ -12,13 +13,22 @@
         @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
         protected byte[] capa;
 
+        @ForeignKey(entity = EstadoLivro.class, childColumns = "idEstado", parentColumns = "id")
+        protected int idEstado;
+
         protected String titulo;
+
+        public int getIdEstado() {
+            return idEstado;
+        }
+
+        public void setIdEstado(int idEstado) {
+            this.idEstado = idEstado;
+        }
 
         protected String descricao;
 
-        public  Livro(){
-
-        }
+        public  Livro(){}
         public  Livro(int id, byte[] capa, String titulo,String descricao){
             this.id= id;
             this.capa = capa;

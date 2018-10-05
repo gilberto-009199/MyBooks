@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.PopupMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,10 +19,12 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.lang.System.*;
 import java.util.ArrayList;
 import java.util.Date;
 
 import br.com.senaijandira.mybooks.db.MyBooksDatabase;
+import br.com.senaijandira.mybooks.model.EstadoLivro;
 import br.com.senaijandira.mybooks.model.Livro;
 import br.com.senaijandira.mybooks.utils.ConvertImage;
 
@@ -40,6 +43,11 @@ public class MainActivity extends AppCompatActivity {
         System.out.println(new Date().toString()+": Evento onCreate iniciado ############################################");
         setContentView(R.layout.activity_main);
         System.out.println(new Date().toString()+": Carregado o xml ############################################");
+
+/*        myBooksDb.daoEstadoLivro().inserir(new EstadoLivro("livre"));
+        myBooksDb.daoEstadoLivro().inserir(new EstadoLivro("Lido"));
+        myBooksDb.daoEstadoLivro().inserir(new EstadoLivro("Lendo"));
+        myBooksDb.daoEstadoLivro().getLivroEstados();*/
 
         /*
         *   Criando uma intancia do banco de dados usando o nome na costante da clase ConvertImage
@@ -66,6 +74,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == R.id.livroslidos) {
             //Abre outra janela... com livros lidos
+        }else{
+            //abre a janela de livros sendo lidos
         }
         return true;
     }
@@ -75,8 +85,20 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         System.out.println(new Date().toString()+":Evento onResume iniciado");
         adapter.clear();
+        if(myBooksDb.daoEstadoLivro().getLivroEstados().length<=0) {
+            long idLivre = myBooksDb.daoEstadoLivro().inserir(new EstadoLivro("livre"));
+            long idLido = myBooksDb.daoEstadoLivro().inserir(new EstadoLivro("Lido"));
+            long idLendo = myBooksDb.daoEstadoLivro().inserir(new EstadoLivro("Lendo"));
+        }
         Livro[] livros = myBooksDb.daoLivro().selecionarLivros();
         adapter.addAll(livros);
+
+        EstadoLivro[] estados=myBooksDb.daoEstadoLivro().getLivroEstados();
+        for(int i =0;i< estados.length;i++){
+            System.out.println("Estado numero "+i);
+            System.out.println("Estado id: "+estados[i].getId());
+            System.out.println("Estado nome: "+estados[i].getEstado());
+        }
         System.out.println(new Date().toString()+":Evento onResume finalizado");
     }
     private void removeLivro(Livro livro, View v){
@@ -108,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
 
             final Livro livrotmp = getItem(position);
 
-            ImageView capa = v.findViewById(R.id.imgLivroCapa);// pega o elemento dentro da v
+            final ImageView capa = v.findViewById(R.id.imgLivroCapa);// pega o elemento dentro da v
 
             TextView titulo = v.findViewById(R.id.txtLivroTitulo);
 
@@ -116,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
 
             ImageView iconeEdit = v.findViewById(R.id.imgEditIcon);
             ImageView iconeView = v.findViewById(R.id.imgViewIcon);
-            ImageView iconeDelete = v.findViewById(R.id.imgDeleteIcon);
+            final ImageView iconeInfo = v.findViewById(R.id.imgInfo);
 
             iconeEdit.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -130,10 +152,20 @@ public class MainActivity extends AppCompatActivity {
                     viewLivro(livrotmp,view);
                 }
             });
-            iconeDelete.setOnClickListener(new View.OnClickListener() {
+            iconeInfo.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    removeLivro(livrotmp,view);
+                    //removeLivro(livrotmp,view);
+                    PopupMenu dropDownMenu = new PopupMenu(getContext(),iconeInfo);
+                    dropDownMenu.getMenuInflater().inflate(R.menu.popup_menucontext,dropDownMenu.getMenu());
+                    dropDownMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                        @Override
+                        public boolean onMenuItemClick(MenuItem item) {
+                            System.out.println(" Usuario selecionou "+item.getTitle());
+                            return true;
+                        }
+                    });
+                    dropDownMenu.show();
                 }
             });
 

@@ -100,12 +100,14 @@ public class CadastroActivity extends AppCompatActivity {
 
             Livro livroTmp = new Livro(0, capa, titulo, desc);
 
+            livroTmp.setIdEstado(1);
+
             myBooksDb.daoLivro().inserir(livroTmp);
 
             /*MainActivity.livros= Arrays.copyOf(MainActivity.livros,MainActivity.livros.length+1);*/
 
 
-            Alertas.Alerta(this, "Cadastrado!!", "o livro foui cadastrado com sucessso", new Dialog.OnClickListener() {
+            Alertas.Alerta(this, "Cadastrado!!", "o livro foi cadastrado com sucessso", new Dialog.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     finish();

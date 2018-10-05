@@ -1,15 +1,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="br.com.senaijandira.mybooks.MainActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <item
         android:id="@+id/livroslidos"
-        android:orderInCategory="100"
-        android:title="Livros Lidos"
-        app:showAsAction="never" />
+        android:orderInCategory="1"
+        android:title=" Livros Lidos "
+        app:showAsAction="ifRoom|withText"
+         />
     <item
         android:id="@+id/livrosler"
-        android:orderInCategory="100"
-        android:title="Livros a Ler"
-        app:showAsAction="never" />
+        android:orderInCategory="2"
+        android:title="Livros Lendo"
+        app:showAsAction="ifRoom|withText"
+        />
 </menu>

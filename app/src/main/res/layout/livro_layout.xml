@@ -59,24 +59,28 @@
                 <ImageView
                     android:background="#00ff26"
                     android:layout_gravity="center"
-                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:src="@drawable/edit24x24"
                     android:id="@+id/imgEditIcon"/>
                 <ImageView
                     android:layout_gravity="center"
                     android:background="#00ffcb"
-                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:src="@drawable/pageview24x24"
                     android:id="@+id/imgViewIcon"/>
                 <ImageView
                     android:layout_gravity="center"
-                    android:background="#ff4f4f"
-                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="7dp"
+                    android:background="#000"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/trash24x24"
-                    android:id="@+id/imgDeleteIcon"/>
+                    android:src="@drawable/menudropdawn24x24"
+                    android:id="@+id/imgInfo"/>
             </LinearLayout>
         </LinearLayout>
 
