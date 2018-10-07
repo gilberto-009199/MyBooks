@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         System.out.println(new Date().toString()+":Evento onResume iniciado");
         adapter.clear();
         if(myBooksDb.daoEstadoLivro().getLivroEstados().length<=0) {
-            long idLivre = myBooksDb.daoEstadoLivro().inserir(new EstadoLivro("livre"));
+            long idLivre = myBooksDb.daoEstadoLivro().inserir(new EstadoLivro("Livre"));
             long idLido = myBooksDb.daoEstadoLivro().inserir(new EstadoLivro("Lido"));
             long idLendo = myBooksDb.daoEstadoLivro().inserir(new EstadoLivro("Lendo"));
         }
