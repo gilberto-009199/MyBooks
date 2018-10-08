@@ -2,15 +2,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/livroslidos"
+        android:id="@+id/livrosler"
         android:orderInCategory="1"
-        android:title=" Livros Lidos "
+        android:title=" Livros Lendo "
         app:showAsAction="ifRoom|withText"
          />
     <item
-        android:id="@+id/livrosler"
+        android:id="@+id/livroslidos"
         android:orderInCategory="2"
-        android:title="Livros Lendo"
+        android:title="Livros Lidos"
         app:showAsAction="ifRoom|withText"
         />
 </menu>

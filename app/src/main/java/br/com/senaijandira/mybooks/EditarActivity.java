@@ -24,7 +24,7 @@ import br.com.senaijandira.mybooks.utils.ConvertImage;
 
 public class EditarActivity extends AppCompatActivity {
     private MyBooksDatabase myBooksDb;
-    EditText txtTitulo,txtDesc;;
+    EditText txtTitulo,txtDesc;
     ImageView imgLivroCapa;
     Bitmap livroCapa;
 
@@ -51,6 +51,7 @@ public class EditarActivity extends AppCompatActivity {
 
         txtTitulo.setText(livro.getTitulo());
         txtDesc.setText(livro.getDescricao());
+        imgLivroCapa.setImageBitmap(ConvertImage.toBitmap(livro.getCapa()));
 
     }
     public void Voltar(View view) {

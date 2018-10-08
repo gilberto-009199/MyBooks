@@ -1,8 +1,9 @@
 package br.com.senaijandira.mybooks;
 
-import android.app.Activity;
+import android.app.Dialog;
 import android.arch.persistence.room.Room;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -15,17 +16,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import java.lang.System.*;
 import java.util.ArrayList;
 import java.util.Date;
 
 import br.com.senaijandira.mybooks.db.MyBooksDatabase;
-import br.com.senaijandira.mybooks.model.EstadoLivro;
 import br.com.senaijandira.mybooks.model.Livro;
+import br.com.senaijandira.mybooks.utils.Alertas;
 import br.com.senaijandira.mybooks.utils.ConvertImage;
 
 import static java.lang.Thread.sleep;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private ListView listaLivro;
     /*public static ArrayList<Livro> livros = new ArrayList<Livro>();*/
     public static LivrosAdapter adapter;
+    public EditText txtPesquisa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         *   Criando uma intancia do banco de dados usando o nome na costante da clase ConvertImage
         *
         */
+        txtPesquisa = findViewById(R.id.txtSerach);
         myBooksDb = Room.databaseBuilder(getApplicationContext(),MyBooksDatabase.class, ConvertImage.DATABASE_NAME).fallbackToDestructiveMigration().allowMainThreadQueries().build();
 
         listaLivro = findViewById(R.id.ltsLivros);
@@ -69,13 +72,21 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
+    public  void PesquisaLivros(View v){
+        String descricao = txtPesquisa.getText().toString();
+        Livro[] livros = myBooksDb.daoLivro().pesquisaLivros("%"+descricao+"%");
+        adapter.clear();
+        adapter.addAll(livros);
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        System.out.println(" Opção : "+item.getTitle()+" ################################################################");
         if(item.getItemId() == R.id.livroslidos) {
-            //Abre outra janela... com livros lidos
+            System.out.println(" Entrou em lidos "+item.getTitle());
+            abrirListas("lido");
         }else{
-            //abre a janela de livros sendo lidos
+            abrirListas("lendo");
         }
         return true;
     }
@@ -85,26 +96,24 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         System.out.println(new Date().toString()+":Evento onResume iniciado");
         adapter.clear();
-        if(myBooksDb.daoEstadoLivro().getLivroEstados().length<=0) {
+        /*if(myBooksDb.daoEstadoLivro().getLivroEstados().length<=0) {
             long idLivre = myBooksDb.daoEstadoLivro().inserir(new EstadoLivro("Livre"));
             long idLido = myBooksDb.daoEstadoLivro().inserir(new EstadoLivro("Lido"));
             long idLendo = myBooksDb.daoEstadoLivro().inserir(new EstadoLivro("Lendo"));
-        }
+        }*/
         Livro[] livros = myBooksDb.daoLivro().selecionarLivros();
         adapter.addAll(livros);
 
-        EstadoLivro[] estados=myBooksDb.daoEstadoLivro().getLivroEstados();
+        /*EstadoLivro[] estados=myBooksDb.daoEstadoLivro().getLivroEstados();
         for(int i =0;i< estados.length;i++){
             System.out.println("Estado numero "+i);
             System.out.println("Estado id: "+estados[i].getId());
             System.out.println("Estado nome: "+estados[i].getEstado());
-        }
+        }*/
         System.out.println(new Date().toString()+":Evento onResume finalizado");
     }
     private void removeLivro(Livro livro, View v){
         myBooksDb.daoLivro().deletar(livro);
-        //remove o item do elemento layout listalivro
-        //listaLivro.removeView(v);
         adapter.remove(livro);
     }
     public void abrirCadastro(View v){
@@ -112,7 +121,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void abrirListas(View view) {
-        startActivity(new Intent(this,LivrosActivity.class));
+        startActivity(new Intent(this,LendoLivrosActivity.class));
+    }
+
+    public void abrirListas(String lista) {
+        if(lista.equals("lido")){
+            startActivity(new Intent(this,LidosLivrosActivity.class));
+        }else{
+            startActivity(new Intent(this,LendoLivrosActivity.class));
+        }
     }
 
     public class LivrosAdapter extends ArrayAdapter<Livro>{
@@ -162,14 +179,62 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public boolean onMenuItemClick(MenuItem item) {
                             System.out.println(" Usuario selecionou "+item.getTitle());
-                            return true;
+                            switch(item.getTitle().toString()){
+                                case "Enviar para Lendo":
+                                    System.out.println("####################################");
+                                    System.out.println("#####    Enviando > lendo       #####");
+                                    System.out.println(" Livro  :   "+ livrotmp.getTitulo());
+                                    System.out.println(" Estado :   "+ livrotmp.getEstado());
+                                    System.out.println("####################################");
+                                    if(livrotmp.getEstado().equals("lido")){
+                                        System.out.println(" Enviado!! livro para lendo "+item.getTitle()+" #########");
+                                        Alertas.Alerta(getContext(), "Livro ja foi lido!!", "o livro não pode ser movido para lendo, pois está em livros lidos", new Dialog.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+
+                                            }
+                                        }, null);
+                                    }else {
+                                        livrotmp.setEstado("lendo");
+                                        myBooksDb.daoLivro().atualizar(livrotmp);
+                                    }
+                                    onResume();
+                                    break;
+                                case "Enviar para Lidos":
+                                    livrotmp.setEstado("lido");
+                                    myBooksDb.daoLivro().atualizar(livrotmp);
+                                    onResume();
+                                    break;
+                                case "Excluir Livro":
+                                    if(livrotmp.getEstado().equals("livre")){
+                                        Alertas.Alerta(getContext(), "Livro Deletado!!", "o livro foi deletado com sucessso", new Dialog.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                myBooksDb.daoLivro().deletar(livrotmp);
+                                                onResume();
+                                            }
+                                        }, null);
+                                    }else{
+                                        Alertas.Alerta(getContext(), "Falha ao deletar livro!!", "o livro esta sendo usado (lido/lendo), Retire-o das listas para exclui-lo", new Dialog.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                System.out.println(" Status do livro"+livrotmp.getEstado());
+                                                abrirListas(livrotmp.getEstado());
+
+                                                //abrirListas(null);
+                                            }
+                                        }, null);
+                                    }
+                            }
+
+                           return true;
                         }
                     });
                     dropDownMenu.show();
                 }
             });
 
-
+            System.out.println(" Estado do livro: "+livrotmp.getEstado());
             capa.setImageBitmap(ConvertImage.toBitmap(livrotmp.getCapa()));
 
             titulo.setText(livrotmp.getTitulo());

@@ -6,28 +6,30 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="54dp"
-            android:background="@drawable/btninfo"
-            android:orientation="horizontal">
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_margin="2dp"
-                android:paddingLeft="2dp"
-                android:layout_weight="1"
-                android:focusable="auto"
-                android:hint="Pesquisa..."
-                android:background="@drawable/txt"
-                android:layout_height="match_parent"/>
-            <Button
-                android:layout_height="match_parent"
-                android:layout_width="match_parent"
-                android:layout_weight="2"
-                android:layout_margin="2dp"
-                android:background="@drawable/btn"
-                android:text="Pesquisar"
-                />
-        </LinearLayout>
+    android:layout_width="match_parent"
+    android:layout_height="54dp"
+    android:background="@drawable/btninfo"
+    android:orientation="horizontal">
+    <EditText
+        android:id="@+id/txtSerach"
+        android:layout_width="match_parent"
+        android:layout_margin="2dp"
+        android:paddingLeft="2dp"
+        android:layout_weight="1"
+        android:focusable="auto"
+        android:hint="Pesquisa..."
+        android:background="@drawable/txt"
+        android:layout_height="match_parent"/>
+    <Button
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_weight="2"
+        android:layout_margin="2dp"
+        android:onClick="PesquisaLivros"
+        android:background="@drawable/btn"
+        android:text="Pesquisar"
+        />
+</LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout"

@@ -30,7 +30,8 @@
             android:theme="@android:style/Theme.Translucent" />
         <activity android:name=".teste" />
         <activity android:name=".EditarActivity" />
-        <activity android:name=".LivrosActivity"></activity>
+        <activity android:name=".LendoLivrosActivity" />
+        <activity android:name=".LidosLivrosActivity"></activity>
     </application>
 
 </manifest>

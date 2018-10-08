@@ -28,4 +28,10 @@ public interface LivroDao {
     Livro[] selecionarLivros();
 
 
+    @Query("SELECT * FROM livro where Estado =:estado ")
+    Livro[] selecionarLivros(String estado);
+
+    @Query("SELECT * FROM livro where titulo like :descri or descricao like :descri")
+    Livro[] pesquisaLivros(String descri);
+
 }

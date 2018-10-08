@@ -13,18 +13,19 @@
         @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
         protected byte[] capa;
 
-        @ForeignKey(entity = EstadoLivro.class, childColumns = "idEstado", parentColumns = "id")
-        protected int idEstado;
+
+        protected String Estado;
+
+        public String getEstado() {
+            return Estado;
+        }
+
+        public void setEstado(String estado) {
+            Estado = estado;
+        }
 
         protected String titulo;
 
-        public int getIdEstado() {
-            return idEstado;
-        }
-
-        public void setIdEstado(int idEstado) {
-            this.idEstado = idEstado;
-        }
 
         protected String descricao;
 

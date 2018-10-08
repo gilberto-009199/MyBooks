@@ -100,7 +100,7 @@ public class CadastroActivity extends AppCompatActivity {
 
             Livro livroTmp = new Livro(0, capa, titulo, desc);
 
-            livroTmp.setIdEstado(1);
+            livroTmp.setEstado("livre");
 
             myBooksDb.daoLivro().inserir(livroTmp);
 
