@@ -21,3 +21,6 @@ Para instalar o aplicativo use [releases](https://github.com/gilberto-009199/MyB
 
 * [ROOM](https://developer.android.com/topic/libraries/architecture/room) - ORM para usar o SQLite do android
 * [designer](https://developer.android.com/design/) - Biblioteca para o desenvolvimento Visual do Aplicativo
+
+
+"O inimigo se escondera no ultimo lugar aonde vocé o procuraria."
