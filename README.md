@@ -6,7 +6,7 @@ dentro do aplicativo.
 
 ## Como usar?
 
-Para instalar o aplicativo use [releases](https://maven.apache.org/) e baixe o .apk no android
+Para instalar o aplicativo use [releases](https://github.com/gilberto-009199/MyBooks/releases) e baixe o .apk no android
 
 ### Pre-requisitos Dependencias
 
