@@ -1,6 +1,6 @@
 # Projeto Mybook
 
-Esse projeto se basea na criação de um aplicativo que gerencie livros,
+Esse projeto se baseia na criação de um aplicativo que gerencie livros,
 permitindo também que o usuario possa criar,alterar, excluir e mover o livro estre as categorias(Lidos,Lendo)
 dentro do aplicativo.
 
