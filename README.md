@@ -16,9 +16,6 @@ Para instalar o aplicativo use [releases](https://github.com/gilberto-009199/MyB
 * Para instalar o .apk o modo desenvolvedor deve estar ativo
 * Para instalar o .apk o android deve ter acesso a internet
 
-## Authors
-
-* **Gilberto Ramos de Oliveira** - * Aluno do SENAI-Jandira*
 
 ## Bibliotecas
 
