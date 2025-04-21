@@ -3,6 +3,8 @@
 
 ![Tela inicial](./home.png)
 
+<img align="right" src="./assets/android.svg" alt="Android" width="32px"/>
+<img align="right" src="./assets/java16x16.svg" alt="Java" width="32px"/>
 Esse projeto se baseia na criação de um aplicativo que gerencie livros,
 permitindo também que o usuario possa criar,alterar, excluir e mover o livro estre as categorias(Lidos,Lendo)
 dentro do aplicativo.
